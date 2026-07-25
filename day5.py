@@ -1,44 +1,78 @@
-#  create a funcrion
+# #  create a funcrion
 
-def hello():
-    print('Welcome to Python!')
-hello()
+# def hello():
+#     print('Welcome to Python!')
+# hello()
 
 
-#parameter 
-def example(name):
-    print("My name is",name)
+# #parameter 
+# def example(name):
+#     print("My name is",name)
     
-example('Raman')
-example('shyam')
+# example('Raman')
+# example('shyam')
 
-#return 
+# #return 
 
-def sum (a,b):
- return a+b
-
-
-
-
-print(sum(1,2))
+# def sum (a,b):
+#  return a+b
 
 
 
 
+# print(sum(1,2))
 
 
-def Even (number):
-    if(number%2 == 0):
-        print('Even')
+
+
+
+
+# def Even (number):
+#     if(number%2 == 0):
+#         print('Even')
+#     else:
+#         print("odd")
+    
+# Even(2)
+
+
+# def student_info(name, age, course):
+#    print('student name :', name)
+#    print('student age :', age)
+#    print('student course :', course)
+    
+# student_info("Raman",23,'Ai')
+
+
+
+def calculator(a, b, operator):
+    if(operator == '+'):
+        return a + b
+    elif(operator == '-'):
+        return a-b 
+    elif(operator == '*'):
+        return a*b
     else:
-        print("odd")
-    
-Even(2)
+        return a/b
+     
 
 
-def student_info(name, age, course):
-   print('student name :', name)
-   print('student age :', age)
-   print('student course :', course)
+print(calculator(10, 5, "+"))
+print(calculator(10, 5, "-"))
+print(calculator(10, 5, "*"))
+print(calculator(10, 5, "/"))
+
+
+
+#Exception handling
+
+
+def mul ():
+    try:
+        number  = int(input('Enter a number'))
+        print (number)
     
-student_info("Raman",23,'Ai')
+    except:
+        print("ENtered number  must  be integr")
+
+mul()
