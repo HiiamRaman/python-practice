@@ -1,0 +1,2 @@
+def catsound():
+    return 'Meow'

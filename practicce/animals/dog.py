@@ -1,0 +1,2 @@
+def dogSound () :
+    return 'woof'
