@@ -1,14 +1,14 @@
-from fastapi import FastAPI,Query
+# from fastapi import FastAPI,Query
 
-app = FastAPI()
-
-
-@app.get("/")
-def home():
-    return {"message": "Hello Developer"}
+# app = FastAPI()
 
 
-# @app.get('/user')
+# @app.get("/")
+# def home():
+#     return {"message": "Hello Developer"}
+
+
+# # @app.get('/user')
 # def create_user():
 #     return { 'message':'User created successfully'}
 
@@ -87,14 +87,85 @@ def home():
 
 
 # 1.
-@app.get("/products")
-def get_products(category: str='apple', limit: int = Query(default=10,ge=1,le=100), in_stock: bool = True):
-    print("FUNCTION EXECUTED")
+# @app.get("/products")
+# def get_products(category: str='apple', limit: int = Query(default=10,ge=1,le=100), in_stock: bool = True):
+#     print("FUNCTION EXECUTED")
 
-    return {"category": category, "limit": limit, "in_stock": in_stock}
+#     return {"category": category, "limit": limit, "in_stock": in_stock}
 
 
-# 2
-@app.get("/users/{user_id}/orders")
-def get_order(user_id: int, status: str = "all", limit: int = 10):
-    return {"user_id": user_id, "status": status, "limit": limit}
+# # 2
+# @app.get("/users/{user_id}/orders")
+# def get_order(user_id: int, status: str = "all", limit: int = 10):
+#     return {"user_id": user_id, "status": status, "limit": limit}
+
+
+# from fastapi import FastAPI
+# from pydantic import BaseModel
+
+
+# app = FastAPI()
+
+
+# class UserCreate(BaseModel):
+#     name: str
+#     age: int
+#     is_active: bool = True
+
+
+# @app.post("/users")
+# def create_user(user: UserCreate):
+#     return {"name": user.name, "age": user.age, "is_active": user.is_active}
+
+
+from fastapi import FastAPI,status
+from pydantic import BaseModel
+
+
+app = FastAPI()
+
+
+class ProductCreate(BaseModel):
+    name: str
+    price: int
+    quantity: int
+    in_stock: bool = True
+class ProductResponse (BaseModel):
+    name:str
+    price:float
+    in_stock:bool
+
+
+@app.post("/products",status_code = status.HTTP_201_CREATED,response_model=ProductResponse)
+def create_products(product: ProductCreate):
+    return {
+        "name": product.name,
+        "price": product.price,
+        "quantity": product.quantity,
+        "in_stock": product.in_stock,
+    }
+
+
+# from fastapi import FastAPI
+# from pydantic import BaseModel,Field
+
+
+
+# class MovieCreate(BaseModel):
+#     title:str = Field(min_length=2 ,max_length=100)
+#     rating:float = Field(ge=0,le=10)
+#     duration:int = Field(ge=0)
+#     available:bool = True
+
+
+
+# movie = MovieCreate(
+#     title='ApiEngineering',
+#     rating=9,
+#     duration=120
+
+# )
+
+
+# print(movie)
+# print(movie.model_dump)
