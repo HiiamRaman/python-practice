@@ -35,3 +35,7 @@ def register_user(user: UserRegister):
     print("registered_emails", registered_emails)
 
     return {"name": user.name, "email": user.email}
+
+
+
+
