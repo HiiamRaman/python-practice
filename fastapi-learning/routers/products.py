@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status
-from scehmas.product import ProductCreate, ProductResponse
+from schemas.product import ProductCreate, ProductResponse
 
 router = APIRouter(prefix="/products", tags=["products"])
 
@@ -22,4 +22,8 @@ def get_products():
 
 @router.get("/{product_id}")
 def get_product_id(product_id: int):
-    return {"product_id": product_id}
+    return {
+        "_id": product_id,
+        "name": f"product{product_id}",
+        "message": "Product fetched successfully",
+    }
